@@ -59,6 +59,8 @@ public class Scr_Player : MonoBehaviour
       attack = false;
     }
 
+    
+
     void FixedUpdate(){
 
       Vector3 fixedVelocity = rb2d.velocity;
