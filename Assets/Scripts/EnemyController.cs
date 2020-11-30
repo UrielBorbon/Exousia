@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-     public float visionRadius;
+    public float visionRadius;
     public float speed;
     private GameObject healthbarenemy;
     public Rigidbody2D rb2d;
@@ -19,7 +19,6 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        healthbarenemy = GameObject.Find("HealthBarEnemy");
         initialPosition = transform.position;
     }
 
@@ -69,7 +68,6 @@ public class EnemyController : MonoBehaviour
     }
     public void EnemyBack(float enemyPosX)
     {
-       healthbarenemy.SendMessageUpwards("TakeDamage", 50f);
 
         jump = true;
 
