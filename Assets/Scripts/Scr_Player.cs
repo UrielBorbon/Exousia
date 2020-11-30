@@ -16,6 +16,7 @@ public class Scr_Player : MonoBehaviour
   private float H;
   private bool stop;
   private bool attack;
+  public bool talk;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,11 @@ public class Scr_Player : MonoBehaviour
 
       if(Input.GetKeyDown(KeyCode.UpArrow) && grounded){
         jump = true;
+      }
+
+      if(Input.GetKeyDown(KeyCode.O))
+      {
+        talk = true;
       }
 
       Handleinput();
@@ -57,6 +63,7 @@ public class Scr_Player : MonoBehaviour
     private void ResetValues()
     {
       attack = false;
+      talk = false;
     }
 
     

@@ -23,7 +23,6 @@ public class Scr_Animals : MonoBehaviour
 
 
         int random = UnityEngine.Random.Range(0, 600);
-        Debug.Log(random);
 
         if(random == 100){
             transform.localScale = new Vector3(-1,1,1);
