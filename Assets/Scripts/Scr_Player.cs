@@ -113,27 +113,6 @@ public class Scr_Player : MonoBehaviour
       
     }
 
-    private void Handleinput()
-    {
-      if(Input.GetKeyDown(KeyCode.P))
-      {
-        attack = true;
-      }
-    }
-
-    private void Handleattack()
-    {
-      if(attack)
-      {
-        anim.SetTrigger("attack");
-      }
-    }
-
-    private void ResetValues()
-    {
-      attack = false;
-    }
-
    public void EnemyJump()
     {
         jump = true;
