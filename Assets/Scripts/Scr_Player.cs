@@ -16,12 +16,17 @@ public class Scr_Player : MonoBehaviour
   private float H;
   private bool stop;
   private bool attack;
+  private SpriteRenderer sprite;
+  private bool movement = true;
+  private GameObject healthbar;
 
     // Start is called before the first frame update
     void Start()
     {
       rb2d = GetComponent<Rigidbody2D>();
       anim = GetComponent<Animator>();
+      sprite = GetComponent<SpriteRenderer>();
+      healthbar = GameObject.Find("HealthBar");
     }
 
 
@@ -37,29 +42,6 @@ public class Scr_Player : MonoBehaviour
       Handleinput();
 
     }
-
-    private void Handleinput()
-    {
-      if(Input.GetKeyDown(KeyCode.P))
-      {
-        attack = true;
-      }
-    }
-
-    private void Handleattack()
-    {
-      if(attack)
-      {
-        anim.SetTrigger("attack");
-      }
-    }
-
-    private void ResetValues()
-    {
-      attack = false;
-    }
-
-    
 
     void FixedUpdate(){
 
@@ -96,6 +78,55 @@ public class Scr_Player : MonoBehaviour
 
       Handleattack();
       ResetValues();
+
+      if(!movement) h = 0;
       
     }
+
+    private void Handleinput()
+    {
+      if(Input.GetKeyDown(KeyCode.P))
+      {
+        attack = true;
+      }
+    }
+
+    private void Handleattack()
+    {
+      if(attack)
+      {
+        anim.SetTrigger("attack");
+      }
+    }
+
+    private void ResetValues()
+    {
+      attack = false;
+    }
+
+   public void EnemyJump()
+    {
+        jump = true;
+    }
+    public void EnemyBack(float enemyPosX)
+    {
+        healthbar.SendMessageUpwards("TakeDamage", 20f);
+
+        jump = true;
+
+        float side = Mathf.Sign(enemyPosX - transform.position.x);
+        rb2d.AddForce(Vector2.left * side * jumpPower, ForceMode2D.Impulse);
+
+        movement = false;
+        Invoke("EnableMovement", 0.6f);
+
+        sprite.color = Color.red;
+    }
+    void EnableMovement()
+    {
+        movement = true;
+        sprite.color = Color.white;
+    }
+
+    
 }
