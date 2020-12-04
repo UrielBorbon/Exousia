@@ -46,7 +46,7 @@ public class Scr_Menu : MonoBehaviour
         }
 
         if(opcion.gameObject.name == "Inicio"){
-            SceneManager.LoadScene("Level 1-a");
+            SceneManager.LoadScene("Nivel 1");
         }
 
     }
