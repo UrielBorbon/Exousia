@@ -7,6 +7,7 @@ public class Scr_Player : MonoBehaviour
   public float maxSpeed = 5f;
   public float speed = 2f; 
   public bool grounded;
+  public bool swimming;
   public bool moving;
   public float jumpPower = 6.5f;
 
@@ -31,9 +32,12 @@ public class Scr_Player : MonoBehaviour
     }
 
 
+
+
     void Update(){
       anim.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
       anim.SetBool("Grounded", grounded);
+      //anim.SetBool("Swimming", swimming);
       anim.SetBool("Moving", moving);
 
       if(Input.GetKeyDown(KeyCode.UpArrow) && grounded){
@@ -49,6 +53,9 @@ public class Scr_Player : MonoBehaviour
 
     }
 
+
+
+
     private void Handleinput()
     {
       if(Input.GetKeyDown(KeyCode.P))
@@ -56,6 +63,10 @@ public class Scr_Player : MonoBehaviour
         attack = true;
       }
     }
+
+
+
+
 
     private void Handleattack()
     {
@@ -65,6 +76,10 @@ public class Scr_Player : MonoBehaviour
       }
     }
 
+
+
+
+
     private void ResetValues()
     {
       attack = false;
@@ -72,6 +87,10 @@ public class Scr_Player : MonoBehaviour
     }
 
     
+
+
+
+
 
     void FixedUpdate(){
 
@@ -113,10 +132,20 @@ public class Scr_Player : MonoBehaviour
       
     }
 
+
+
+
+
+
    public void EnemyJump()
     {
         jump = true;
     }
+
+
+
+
+
     public void EnemyBack(float enemyPosX)
     {
         healthbar.SendMessageUpwards("TakeDamage", 20f);
@@ -131,6 +160,11 @@ public class Scr_Player : MonoBehaviour
 
         sprite.color = Color.red;
     }
+
+
+
+
+    
     void EnableMovement()
     {
         movement = true;
